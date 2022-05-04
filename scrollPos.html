@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js 스크롤 위치 테스트</title>
+  <style>
+    * {margin:0; padding:0}
+    img {width:100%; vertical-align: top;}
+    ul,li {list-style:none}
+    var {font-style: normal;}
+    .content-box.progress {position:relative; padding-top:40px; min-height:200px; background:#6864c5; padding:33px 16px;}
+    .content-box.progress .progress-box {position:absolute; left:16px; right:16px; margin:0 auto;}
+    .progress .bar {position: relative; margin:9px 0; width:100%; height:4px; border-radius:4px; background:#aaa}
+    .progress .bar .fill {position:absolute; left:0; top:0; border-radius:inherit; width:0; height:100%; background:purple}
+    .flex-box {display: flex; justify-content: right; align-items: center;}
+    .num {font-weight:bold; font-size:33px;border:1px solid #fff;}
+    .unit {font-size:20px;}
+  </style>
+</head>
+<body>
+  <div id="wrap" class="event-box">
+    <div class="content-box">
+      <img src="images/img01.jpg" alt=""/>
+    </div>
+    <div class="content-box">
+      <img src="images/img02.jpg" alt=""/>
+    </div>
+    <div class="content-box">
+      <img src="images/img03.jpg" alt=""/>
+    </div>
+    <div class="content-box progress">
+      <div class="flex-box"><span class="total"><var class="num">1000</var><span class="unit">원</span></span></div>
+      <div class="progress-box">
+        <ul class="progress">
+          <li class="bar"><span class="fill"></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      var element = document.querySelector(".content-box.progress .num");
+      const absoluteTop = window.pageYOffset + element.getBoundingClientRect().top;
+      let scrollLocation = document.documentElement.scrollTop; // 현재 스크롤바 위치
+      let windowHeight = window.innerHeight; // 스크린 창
+      let fullHeight = document.body.scrollHeight; //  margin 값은 포함 x
+
+      if(scrollLocation + windowHeight >= absoluteTop){
+        console.log(absoluteTop)
+      }
+    })
+
+  </script>
+</body>
+</html>
