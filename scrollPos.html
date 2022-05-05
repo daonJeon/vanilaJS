@@ -53,12 +53,12 @@
       var scrollLocation = document.documentElement.scrollTop; // 현재 스크롤바 위치
       var windowHeight = window.innerHeight; // 스크린 창
       var fullHeight = document.body.scrollHeight; //  margin 값은 포함 x      
-      var elementisiblePos = elementPos - (windowHeight/2) //지정한 엘리먼트 위치 - windowHeight/2를 뺀값이 윈도우 화면에서 엘리먼트가 중간에 위치했을때 값.
+      var elementisiblePos = elementPos - (windowHeight / 2) - 100 //지정한 엘리먼트 위치 - windowHeight/2를 뺀값이 윈도우 화면에서 엘리먼트가 중간에 위치했을때 값.
 
       fixTxt.innerText = "지정한 엘리먼트 위치 "+elementPos + " pageOffset"+window.pageYOffset  + " 스크롤바 위치"+scrollLocation 
       
       if(scrollLocation >= elementisiblePos && countingDone == 0){
-        new numberCounter("count",5000,1300);//엘리먼트, 목표 값, 소요 시간
+        new numberCounter("count",5000,1250);//엘리먼트, 목표 값, 소요 시간
         progressBar(1000)
         countingDone = 1;
       }
